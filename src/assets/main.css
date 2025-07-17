@@ -1,5 +1,14 @@
 /* Design Tokens: Palette */
 :root {
+  /* I use two sets of variables for design tokens:
+  1. The specific values like colors, sizes, fonts, etc
+  2. The semantic names that describe their purpose
+     (e.g., primary, background, text, etc)
+     This way, I can use the semantic names in my CSS,
+     and if I need to change the actual color, I only have to do it in one place.
+  */
+
+  /* Set 1 */
   /* Base Colors */
   --color-blue-500: #2563eb;
   --color-blue-700: #1d4ed8;
@@ -22,6 +31,8 @@
   --radius-full: 9999px;
   --rounded-corners: var(--radius-md); /* semantic: use for default rounding */
 
+
+  /* Set 2 */
   /* Semantic Colors Reassigned */
   --color-primary: var(--color-blue-500);
   --color-primary-dark: var(--color-blue-700);
@@ -34,7 +45,7 @@
   --color-warning: var(--color-yellow-500);
 }
 
-/* Example usage */
+/* Keep global css to a minimum and use utility classes when possible, below are a few exceptions */
 body {
   background: var(--color-background);
   color: var(--color-text);

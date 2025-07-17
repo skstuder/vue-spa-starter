@@ -1,62 +1,54 @@
 # vue-spa-starter
 
-Basic template for Vue 3, TypeScript, UnoCSS, and Pinia.
+A simple template for building Vue 3 single-page apps with TypeScript, UnoCSS, and Pinia.
 
-## How to Use and Extend UnoCSS for Long-Term Maintainability
+> **Note:** This branch is intentionally overcommented for educational purposes. Comments are more detailed than usual to help new developers understand each part of the codebase.
 
-UnoCSS provides utility classes similar to Tailwind, but with a simpler and more flexible configuration. To keep your styles maintainable and scalable, follow this approach:
+## What is this?
 
-1. **Define Design Tokens in CSS**
+This repo is a starting point for new Vue developers. It includes:
 
-   - In `src/assets/main.css`, create two blocks of CSS variables:
-     - The first block contains specific values for colors, fonts, sizing, etc.
-     - The second block maps those values to semantic variables (e.g., `--color-primary`, `--color-background`).
-   - This separation lets you update a base value and have it reflected everywhere the semantic variable is used.
+- **Vue 3** for building user interfaces
+- **TypeScript** for type safety
+- **UnoCSS** for utility-first styling
+- **Pinia** for state management
 
-2. **Expose Tokens to UnoCSS**
+## How to Use
 
-   - In `uno.config.ts`, add your semantic variables to the UnoCSS theme config:
-     - Example: `primary: 'var(--color-primary)'` enables utility classes like `text-primary`, `bg-primary`, and `border-primary`.
-   - You can override or add custom class names as needed. See the UnoCSS documentation for more options.
+1. Clone the repo and run `npm install` to install dependencies.
+2. Start the development server with `npm run dev`.
+3. Edit components in `src/components` and pages in `src/views`.
 
-3. **Use Utility Classes in Components**
-   - Use your semantic utility classes in your Vue components for consistent, maintainable styling.
-   - Example: `<div class="bg-primary text-surface">...</div>`
+## How is it commented?
 
-This setup makes it easy to change your design system in one place and have those changes reflected throughout your app.
+- Comments are written to be clear and beginner-friendly.
+- Each file explains what it does and why.
+- Code blocks and functions have short comments describing their purpose.
+- Stores and components include tips on how to use them in your app.
 
-## Recommended IDE Setup
+## Key Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Design tokens**: CSS variables for colors, fonts, and spacing are defined in `src/assets/main.css` for easy theming.
+- **UnoCSS integration**: Utility classes use your design tokens for consistent styling.
+- **Pinia stores**: State is managed in simple, well-commented stores (see `src/stores/user.ts`).
 
-## Type Support for `.vue` Imports in TS
+## Example: Using a Store
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+```ts
+// Import the store in your component
+import { useUserStore } from '@/stores/user'
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+const user = useUserStore()
+// Access state: user.isLoggedIn
+// Call actions: user.toggleLoginState()
 ```
 
-### Compile and Hot-Reload for Development
+## Learn More
 
-```sh
-npm run dev
-```
+- [Vue documentation](https://vuejs.org/)
+- [UnoCSS documentation](https://unocss.dev/)
+- [Pinia documentation](https://pinia.vuejs.org/)
 
-### Type-Check, Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+This template is designed to be easy to read, easy to extend, and a great place to start learning Vue development.
